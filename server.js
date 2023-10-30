@@ -8,7 +8,19 @@ const { loadFilesSync } = require("@graphql-tools/load-files")
 const typesArray = loadFilesSync(path.join(__dirname, "**/*.graphql"))
 
 const schema = makeExecutableSchema({
-  typeDefs: typesArray
+  typeDefs: typesArray,
+  resolvers: {
+    Query: {
+      products: (parent, args, context, info) => {
+        console.log("Getting the products...")
+        return parent.products
+      },
+      orders: (parent) => {
+        console.log("Getting the orders...")
+        return parent.orders
+      }
+    }
+  }
 })
 
 const root = {
