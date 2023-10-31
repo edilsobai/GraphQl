@@ -23,6 +23,7 @@ function getProductsByPrice(min, max) {
 
 function getProductById(id) {
   return products.find((product)=> product.id === id)
+  
 }
 
 function addNewProduct(id, description, price){
@@ -32,12 +33,32 @@ function addNewProduct(id, description, price){
     price,
     reviews: []
   }
-  
+  products.push(newProduct)
   return newProduct
+}
+
+function addNewProductReview(id, rating, comment){
+  const matchedProduct = getProductById(id)
+  const newProductReview = {
+    rating, 
+    comment
+  }
+  matchedProduct.reviews.push(newProductReview)
+
+  return newProductReview
+  // const newReview = {
+  //   rating,
+  //   comment
+  // }
+  // const productId = products.find((product) => product.id === id )
+  // productId.reviews.push(newReview)
+  // console.log(productId)
+  // return productId
 }
 module.exports = {
   getAllProducts,
   getProductsByPrice,
   getProductById,
-  addNewProduct
+  addNewProduct,
+  addNewProductReview
 }
