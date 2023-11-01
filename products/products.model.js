@@ -46,14 +46,6 @@ function addNewProductReview(id, rating, comment){
   matchedProduct.reviews.push(newProductReview)
 
   return newProductReview
-  // const newReview = {
-  //   rating,
-  //   comment
-  // }
-  // const productId = products.find((product) => product.id === id )
-  // productId.reviews.push(newReview)
-  // console.log(productId)
-  // return productId
 }
 module.exports = {
   getAllProducts,
